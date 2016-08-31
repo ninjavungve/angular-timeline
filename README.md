@@ -1,3 +1,5 @@
+# Add new feature display timeline content center align
+
 # Angular Timeline
 
 An Angular.js directive that generates a responsive, data-driven vertical timeline to tell a story, 
