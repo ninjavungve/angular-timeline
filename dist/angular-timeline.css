@@ -45,6 +45,16 @@ img {
   left: 50%;
   margin-left: -1.5px; }
 
+.timeline-2:before {
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  content: " ";
+  width: 3px;
+  background-color: #cccccc;
+  left: 2% !important;
+  margin-left: -1.5px; }
+
 .timeline-event {
   margin-bottom: 20px;
   position: relative; }
@@ -133,6 +143,11 @@ timeline-badge {
 
 .timeline-inverted timeline-panel {
   float: right; }
+
+.fixed-align-center {
+  width: 196% !important; 
+  left: -96% !important;
+}
 
 .timeline-inverted timeline-panel:before {
   border-left-width: 0;

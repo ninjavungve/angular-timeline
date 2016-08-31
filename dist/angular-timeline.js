@@ -1,5 +1,5 @@
 'use strict';
-angular.module('angular-timeline', []);// Source: src/timeline-badge-directive.js
+angular.module('angular-timeline', []); // Source: src/timeline-badge-directive.js
 /**
  * @ngdoc directive
  * @name angular-timeline.directive:timeline-badge
@@ -31,7 +31,16 @@ angular.module('angular-timeline').directive('timeline', function() {
     restrict: 'AE',
     transclude: true,
     template: '<ul class="timeline" ng-transclude></ul>',
-    controller: function() {}
+    controller: function() {},
+    link: function(scope, element, attrs, controller) {
+      attrs.$observe('side', function(newValue) {
+        if (newValue === 'center') {
+          element.find('ul').addClass('timeline-2');
+        } else {
+          element.find('ul').removeClass('timeline-2');
+        }
+      });
+    }
   };
 });
 
@@ -57,22 +66,23 @@ angular.module('angular-timeline').directive('timelineEvent', function() {
     transclude: true,
     template: '<li class="timeline-event" ng-class-odd="oddClass" ng-class-even="evenClass" ng-transclude></li>',
     link: function(scope, element, attrs, controller) {
-
+      // var child = angular.element(element[0].querySelector('.timeline-event'));
+      var child = element.find('li');
       var checkClass = function(side, leftSide) {
 
         var leftClass = '';
         var rightClass = 'timeline-inverted';
-
+        child.removeClass('fixed-align-center');
         if (side === 'left' || (!side && leftSide === true)) {
           return leftClass;
-        }
-        else if ((side === 'alternate' || !side) && leftSide === false) {
+        } else if ((side === 'alternate' || !side) && leftSide === false) {
           return rightClass;
-        }
-        else if (side === 'right') {
+        } else if (side === 'right') {
           return rightClass;
-        }
-        else {
+        } else if (side === 'center') {
+          child.addClass('fixed-align-center');
+          return rightClass;
+        } else {
           return leftClass;
         }
       };

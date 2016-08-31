@@ -56,6 +56,10 @@ var ExampleCtrl = function($rootScope, $document, $timeout, $scope) {
 	$scope.leftAlign = function() {
 		$scope.side = 'left';
 	}
+	
+	$scope.centerAlign = function() {
+		$scope.side = 'center';
+	}
 
 	$scope.rightAlign = function() {
 		$scope.side = 'right';

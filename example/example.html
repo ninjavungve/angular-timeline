@@ -2,11 +2,12 @@
   <h1>Angular Timeline</h1>
   <button ng-click="addEvent()">Add New Event</button>
   <button ng-click="leftAlign()">Left Side</button>
+  <button ng-click="centerAlign()">Center Sides</button>
   <button ng-click="rightAlign()">Right Side</button>
   <button ng-click="defaultAlign()">Alternate Sides</button>
   <br/>
   <br/>
-  <timeline>
+  <timeline side="{{side}}">
     <!-- can also hard-code to side="left" or side="right" -->
     <timeline-event ng-repeat="event in events" side="{{side}}">
       <!-- uses angular-scroll-animate to give it some pop -->
